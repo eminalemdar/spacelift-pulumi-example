@@ -27,8 +27,8 @@ resources:
       acl: public-read
       contentType: text/html
     options:
-    dependsOn:
-      - ${public-access-block}
+      dependsOn:
+        - ${public-access-block}
   spacelift.png:
     type: aws:s3:BucketObject
     properties:
@@ -38,7 +38,7 @@ resources:
       acl: public-read
       contentType: image/png
     options:
-    dependsOn:
-      - ${public-access-block}
+      dependsOn:
+        - ${public-access-block}
 outputs:
   bucketEndpoint: http://${site-bucket-ea.websiteEndpoint}
