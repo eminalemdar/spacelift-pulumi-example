@@ -7,6 +7,17 @@ resources:
     properties:
       website:
         indexDocument: index.html
+  ownership-controls:
+    type: aws:s3:BucketOwnershipControls
+    properties:
+      bucket: ${site-bucket-ea.id}
+      rule:
+        objectOwnership: ObjectWriter
+  public-access-block:
+    type: aws:s3:BucketPublicAccessBlock
+    properties:
+      bucket: ${site-bucket-ea.id}
+      blockPublicAcls: false
   index.html:
     type: aws:s3:BucketObject
     properties:
@@ -15,6 +26,9 @@ resources:
         fn::fileAsset: ./www/index.html
       acl: public-read
       contentType: text/html
+    options:
+    dependsOn:
+      - ${public-access-block}
   spacelift.png:
     type: aws:s3:BucketObject
     properties:
@@ -23,21 +37,8 @@ resources:
         fn::fileAsset: ./www/spacelift.png
       acl: public-read
       contentType: image/png
-  bucketPolicy:
-    type: aws:s3:BucketPolicy
-    properties:
-      bucket: ${site-bucket-ea}
-      policy: |
-        {
-          "Version": "2012-10-17",
-          "Statement": [
-            {
-              "Effect": "Allow",
-              "Principal": "*",
-              "Action": ["s3:GetObject"],
-              "Resource": ["${site-bucket-ea.arn}/*"]
-            }
-          ]
-        }
+    options:
+    dependsOn:
+      - ${public-access-block}
 outputs:
   bucketEndpoint: http://${site-bucket-ea.websiteEndpoint}
