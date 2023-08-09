@@ -3,7 +3,8 @@ runtime: yaml
 description: A static website hosted on AWS S3
 resources:
   site-bucket-ea:
-    type: aws-native:s3:Bucket
+    type: aws:s3:Bucket
+    acl: public-read
     properties:
       websiteConfiguration:
         indexDocument: index.html
