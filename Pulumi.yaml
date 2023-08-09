@@ -12,7 +12,7 @@ resources:
     properties:
       bucket: ${site-bucket-ea}
       source:
-        Fn::FileAsset: ./www/index.html
+        fn::fileAsset: ./www/index.html
       acl: public-read
       contentType: text/html
   spacelift.png:
@@ -20,7 +20,7 @@ resources:
     properties:
       bucket: ${site-bucket-ea}
       source:
-        Fn::fileAsset: ./www/spacelift.png
+        fn::fileAsset: ./www/spacelift.png
       acl: public-read
       contentType: image/png
   bucketPolicy:
