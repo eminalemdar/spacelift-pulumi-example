@@ -1,12 +1,11 @@
-name: aws-native-static-website
+name: aws-static-website
 runtime: yaml
 description: A static website hosted on AWS S3
 resources:
   site-bucket-ea:
     type: aws:s3:Bucket
-    acl: public-read
     properties:
-      websiteConfiguration:
+      website:
         indexDocument: index.html
   index.html:
     type: aws:s3:BucketObject
