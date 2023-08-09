@@ -41,4 +41,4 @@ resources:
         }
 outputs:
   bucketName: ${site-bucket-ea.bucketName}
-  websiteUrl: ${site-bucket-ea.websiteURL}
+  websiteUrl: ${site-bucket-ea.websiteUrl}
