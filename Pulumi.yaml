@@ -10,7 +10,7 @@ resources:
   index.html:
     type: aws:s3:BucketObject
     properties:
-      bucket: ${site-bucket}
+      bucket: ${site-bucket-demo}
       source:
         Fn::FileAsset: ./www/index.html
       acl: public-read
