@@ -2,7 +2,7 @@ name: aws-native-static-website
 runtime: yaml
 description: A static website hosted on AWS S3
 resources:
-  site-bucket:
+  site-bucket-demo:
     type: aws-native:s3:Bucket
     properties:
       websiteConfiguration:
@@ -18,7 +18,7 @@ resources:
   spacelift.png:
     type: aws:s3:BucketObject
     properties:
-      bucket: ${site-bucket}
+      bucket: ${site-bucket-demo}
       source:
         Fn::FileAsset: ./www/spacelift.png
       acl: public-read
@@ -26,7 +26,7 @@ resources:
   bucketPolicy:
     type: aws:s3:BucketPolicy
     properties:
-      bucket: ${site-bucket}
+      bucket: ${site-bucket-demo}
       policy: |
         {
           "Version": "2012-10-17",
@@ -35,10 +35,10 @@ resources:
               "Effect": "Allow",
               "Principal": "*",
               "Action": ["s3:GetObject"],
-              "Resource": ["${site-bucket.arn}/*"]
+              "Resource": ["${site-bucket-demo.arn}/*"]
             }
           ]
         }
 outputs:
-  bucketName: ${site-bucket.bucketName}
-  websiteUrl: ${site-bucket.websiteURL}
+  bucketName: ${site-bucket-demo.bucketName}
+  websiteUrl: ${site-bucket-demo.websiteURL}
