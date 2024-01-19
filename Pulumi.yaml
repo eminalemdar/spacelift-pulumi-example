@@ -1,5 +1,7 @@
 name: aws-static-website
 runtime: yaml
+variables:
+  bucketName: site-bucket-ea
 description: A static website hosted on AWS S3
 resources:
   site-bucket-ea:
@@ -7,6 +9,9 @@ resources:
     properties:
       website:
         indexDocument: index.html
+      tags:
+        - key: Name
+          value: ${bucketName}
   ownership-controls:
     type: aws:s3:BucketOwnershipControls
     properties:
