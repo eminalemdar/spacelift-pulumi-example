@@ -10,8 +10,8 @@ resources:
       website:
         indexDocument: index.html
       tags:
-        - key: Name
-          value: ${bucketName}
+        key: Name
+        value: ${bucketName}
   ownership-controls:
     type: aws:s3:BucketOwnershipControls
     properties:
