@@ -2,6 +2,7 @@ name: aws-static-website
 runtime: yaml
 variables:
   bucketName: site-bucket-ea
+  environment: demo
 description: A static website hosted on AWS S3
 resources:
   site-bucket-ea:
@@ -11,6 +12,7 @@ resources:
         indexDocument: index.html
       tags:
         Name: ${bucketName}
+        environment: ${environment}
   ownership-controls:
     type: aws:s3:BucketOwnershipControls
     properties:
