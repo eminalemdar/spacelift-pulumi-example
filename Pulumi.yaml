@@ -1,7 +1,7 @@
 name: aws-static-website
 runtime: yaml
 variables:
-  bucketName: site-bucket-ea
+  bucketName: site-bucket-ea-demo
   environment: demo
 description: A static website hosted on AWS S3
 resources:
